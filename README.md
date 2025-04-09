@@ -18,7 +18,7 @@ Dockpatrol is an automated GitOps tool that keeps your Docker environment clean 
 You can use the prebuilt Docker image directly from your container registry:
 
 ```bash
-docker pull <your-registry>/<your-image>:<tag>
+docker pull ghcr.io/fars-fede-fire/dockpatrol:latest
 ```
 
 ## Quick Start
@@ -47,7 +47,7 @@ Set `INTERVAL=0` to run the sync once and exit.
 services:
   dockpatrol:
     container_name: dockpatrol
-    image: dockpatrol:latest
+    image: ghcr.io/fars-fede-fire/dockpatrol:latest
     volumes:
       - ./key.txt:/app/key.txt
       - /var/run/docker.sock:/var/run/docker.sock
