@@ -1,0 +1,21 @@
+services:
+  dockpatrol:
+    container_name: dockpatrol
+    image: dockpatrol:latest
+    volumes:
+      - ./key.txt:/app/key.txt
+      - /var/run/docker.sock:/var/run/docker.sock
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    environment:
+      - GITHUB_OWNER=${GITHUB_OWNER}
+      - GITHUB_REPO=${GITHUB_REPO}
+      - GITHUB_BRANCH=${GITHUB_BRANCH}
+      - GITHUB_TOKEN=${GITHUB_TOKEN}
+      - GITHUB_STACKS_DIR=${GITHUB_STACKS_DIR} 
+      - LOCAL_REPO_PATH=${LOCAL_REPO_PATH}
+      - INTERVAL=${INTERVAL}
+    labels:
+      - dockpatrol_prune=false
+    
